@@ -1,13 +1,5 @@
 import os
 
-def listar_arquivos_txt(diretorio):
-    arquivos_txt = []
-    for root, dirs, files in os.walk(diretorio):
-        for file in files:
-            if file.endswith(".txt"):
-                arquivos_txt.append(os.path.join(root, file))
-    return arquivos_txt
-
 def coletar_nomes_de_arquivos(diretorio, lista_de_pastas):
     nomes_de_arquivos = []
     for pasta in lista_de_pastas:
@@ -31,8 +23,15 @@ def verificar_nomes_em_arquivos(nomes_de_arquivos, arquivos_txt):
 
 def main():
     diretorio_alvo = "/caminho/do/diretorio/alvo"  # Substitua pelo diretório que você deseja analisar
-    lista_de_pastas = ["pasta1", "pasta2", "pasta3"]  # Substitua pelas pastas que você deseja acessar
-    lista_de_arquivos_txt = listar_arquivos_txt(diretorio_alvo)
+    lista_de_pastas = ["pasta1", "pasta2", "pasta3"]  # Substitua pelas pastas que você deseja acessar dentro do diretório alvo
+
+    # Lista de arquivos .txt para comparação
+    lista_de_arquivos_txt = [
+        "/caminho/do/arquivo1.txt",
+        "/caminho/do/arquivo2.txt",
+        "/caminho/do/arquivo3.txt",
+    ]
+
     nomes_de_arquivos = coletar_nomes_de_arquivos(diretorio_alvo, lista_de_pastas)
     resultados = verificar_nomes_em_arquivos(nomes_de_arquivos, lista_de_arquivos_txt)
 
